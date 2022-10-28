@@ -1,0 +1,9 @@
+/venv/
+/.idea/
+/__pycache__/
+/data/allitems.csv
+/data/example_format.json
+/data/nvdcve-1.1-2018.json
+/data/nvdcve-1.1-2019.json
+/data/nvdcve-1.1-2020.json
+/data/nvdcve-1.1-2021.json
