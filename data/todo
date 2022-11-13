@@ -1,0 +1,24 @@
+
+Find the number of vulnerabilities in 2018, 2019, 2020, 2021
+Calculate the percentage of high (7.0 - 10.0 CVSS 2.0 score) severity incidents in 2018, 2019, 2020, 2021
+Calculate the percentage of medium (4.0 - 6.9 CVSS 2.0 score) severity incidents in 2018, 2019, 2020, 2021
+Calculate the percentage of low (0.0 - 3.9 CVSS 2.0 score) severity incidents in 2018, 2019, 2020, 2021
+Calculate percentage of vulnerabilities exploitable with/without authentication
+Calculate percentage of vulnerabilities exploitable with/without network access
+
+Calculate the number, average severity, frequency and of each of the following category of vulnerability by year:
+Buffer overflow
+Integer overflow
+Format string
+PHP remote file inclusion
+SQL injection
+Authentication
+Directory traversal
+Denial of Service
+Privilege action
+Cross-Site Request Forgery (CSRF)
+CRLF injection
+Race condition
+Cryptographic error
+Information leak/ disclosure
+Cross-Site Scripting (XSS)
