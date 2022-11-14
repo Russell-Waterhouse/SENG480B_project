@@ -11,16 +11,30 @@ def get_data():
 
 
 def get_2018_data():
-    return pd.read_json('data/nvdcve-1.1-2018.json')
+    return get_valid_data(pd.read_json('data/nvdcve-1.1-2018.json'))
 
 
 def get_2019_data():
-    return pd.read_json('data/nvdcve-1.1-2019.json')
+    return get_valid_data(pd.read_json('data/nvdcve-1.1-2019.json'))
 
 
 def get_2020_data():
-    return pd.read_json('data/nvdcve-1.1-2020.json')
+    return get_valid_data(pd.read_json('data/nvdcve-1.1-2020.json'))
 
 
 def get_2021_data():
-    return pd.read_json('data/nvdcve-1.1-2021.json')
+    return get_valid_data(pd.read_json('data/nvdcve-1.1-2021.json'))
+
+
+def get_valid_data(unvalidated_data):
+    valid_data = unvalidated_data.copy()
+    for i in range(len(unvalidated_data.index)-1, 0, -1):
+        item = unvalidated_data.iloc[i]
+        d1 = item["CVE_Items"]["impact"]
+        if len(d1) < 2:
+            valid_data = valid_data.drop(valid_data.index[i])
+    return valid_data
+
+
+if __name__ == '__main__':
+    get_2018_data()
