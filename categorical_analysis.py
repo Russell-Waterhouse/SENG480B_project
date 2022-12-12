@@ -31,6 +31,14 @@ def print_number_of_each_category():
         information_leak_disclosure = []
         cross_site_scripting = []
         use_after_free = []
+        server_side_request_forgery = []
+        improper_input_validation = []
+        os_command_injection = []
+        unrestricted_file_upload = []
+        critical_function_auth_missing = []
+        hard_coded_credentials = []
+        missing_authorization = []
+        incorrect_default_permissions = []
         for i in range(0, size):
             data_point = data_year.iloc[i]
             # Useful in debugging
@@ -79,6 +87,22 @@ def print_number_of_each_category():
                     cross_site_scripting.append(data_point)
                 if category == "CWE-416":
                     use_after_free.append(data_point)
+                if category == "CWE-918":
+                    server_side_request_forgery.append(data_point)
+                if category == "CWE-20":
+                    improper_input_validation.append(data_point)
+                if category == "CWE-78":
+                    os_command_injection.append(data_point)
+                if category == "CWE-434":
+                    unrestricted_file_upload.append(data_point)
+                if category == "CWE-306":
+                    critical_function_auth_missing.append(data_point)
+                if category == "CWE-798":
+                    hard_coded_credentials.append(data_point)
+                if category == "CWE-862":
+                    missing_authorization.append(data_point)
+                if category == "CWE-276":
+                    incorrect_default_permissions.append(data_point)
 
         average_cvss_2_score = get_average_cvss_2_score(buffer_overflow)
         print("there were " + str(len(buffer_overflow)) + " buffer overflow CVE's in " + str(year)
@@ -124,12 +148,41 @@ def print_number_of_each_category():
         average_cvss_2_score = get_average_cvss_2_score(information_leak_disclosure)
         print("there were " + str(len(information_leak_disclosure)) + " information disclosure CVE's in " + str(year)
               + " with an average CVSS2 score of " + str(average_cvss_2_score))
+        
+        print("\n\n\n")
 
         print("that concludes the original work in the paper we are referencing")
         print("here starts the categories that we have added, to add complexity")
+        print("\n\n\n")
+
         average_cvss_2_score = get_average_cvss_2_score(use_after_free)
         print("there were " + str(len(use_after_free)) + " use after free CVE's in " + str(year)
               + " with an average CVSS2 score of " + str(average_cvss_2_score))
+        average_cvss_2_score = get_average_cvss_2_score(server_side_request_forgery)
+        print("there were " + str(len(server_side_request_forgery)) + " server side request forgery CVE's in " + str(year)
+              + " with an average CVSS2 score of " + str(average_cvss_2_score))
+        average_cvss_2_score = get_average_cvss_2_score(improper_input_validation)
+        print("there were " + str(len(improper_input_validation)) + " improper input validation CVE's in " + str(year)
+              + " with an average CVSS2 score of " + str(average_cvss_2_score))
+        average_cvss_2_score = get_average_cvss_2_score(os_command_injection)
+        print("there were " + str(len(os_command_injection)) + " os command injection CVE's in " + str(year)
+              + " with an average CVSS2 score of " + str(average_cvss_2_score))
+        average_cvss_2_score = get_average_cvss_2_score(unrestricted_file_upload)
+        print("there were " + str(len(unrestricted_file_upload)) + " unrestricted file upload CVE's in " + str(year)
+              + " with an average CVSS2 score of " + str(average_cvss_2_score))
+        average_cvss_2_score = get_average_cvss_2_score(critical_function_auth_missing)
+        print("there were " + str(len(critical_function_auth_missing)) + " missing authentication for critical function CVE's in " + str(year)
+              + " with an average CVSS2 score of " + str(average_cvss_2_score))
+        average_cvss_2_score = get_average_cvss_2_score(hard_coded_credentials)
+        print("there were " + str(len(hard_coded_credentials)) + " use of hard coded credentials CVE's in " + str(year)
+              + " with an average CVSS2 score of " + str(average_cvss_2_score))
+        average_cvss_2_score = get_average_cvss_2_score(missing_authorization)
+        print("there were " + str(len(missing_authorization)) + " missing authorization CVE's in " + str(year)
+              + " with an average CVSS2 score of " + str(average_cvss_2_score))
+        average_cvss_2_score = get_average_cvss_2_score(incorrect_default_permissions)
+        print("there were " + str(len(incorrect_default_permissions)) + " incorrect default permissions CVE's in " + str(year)
+              + " with an average CVSS2 score of " + str(average_cvss_2_score))
+
         print("\n\n\n")
         year += 1
 
@@ -141,7 +194,7 @@ def get_average_cvss_2_score(vuln_list):
     for vuln in vuln_list:
         average_cvss_2_score += vuln["CVE_Items"]["impact"]["baseMetricV2"]["cvssV2"]["baseScore"]
     average_cvss_2_score = average_cvss_2_score / len(vuln_list)
-    return average_cvss_2_score
+    return str(round(average_cvss_2_score, 2))
 
 
 if __name__ == '__main__':
